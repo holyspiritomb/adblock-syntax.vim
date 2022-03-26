@@ -1,11 +1,9 @@
-" Vim syntax file
-"      Language: Adblock Plus Filter Lists
-"    Maintainer: Thomas Greiner <https://www.greinr.com/>
-"       Version: 0.1
-
 if exists("b:current_syntax")
   finish
 endif
+
+let s:cpo_save = &cpoptions
+set cpoptions&vim
 
 " Blocking
 syntax match abpBlocking "^[^\$]*" nextgroup=abpBlockingSeparator
@@ -30,27 +28,23 @@ syntax match abpHiding ".*" contained
 syntax match abpHidingException ".*" contained
 
 " Highlights
-hi link abpHeader Comment
-hi link abpComment Comment
-hi link abpCommentKey Comment
-hi link abpCommentValue SpecialComment
-hi link abpBlocking ABPBlock
-hi link abpBlockingSeparator Delimiter
-hi link abpBlockingOption ABPOption
-hi link abpBlockingException ABPBlockException
-hi link abpBlockingExceptionSeparator Delimiter
-hi link abpHiding ABPElemhide
-hi link abpHidingSeparator Delimiter
-hi link abpHidingExceptionSeparator Delimiter
-hi link abpHidingOption ABPOption
-hi link abpHidingException ABPElemhideException
+hi def link abpBlocking Statement
+hi def link abpBlockingException Operator
+hi def link abpBlockingExceptionSeparator Delimiter
+hi def link abpBlockingOption Statement
+hi def link abpBlockingSeparator Delimiter
+hi def link abpComment Comment
+hi def link abpCommentKey Comment
+hi def link abpCommentValue SpecialComment
+hi def link abpHeader Comment
+hi def link abpHiding Statement
+hi def link abpHidingException Operator
+hi def link abpHidingExceptionSeparator Delimiter
+hi def link abpHidingOption Statement
+hi def link abpHidingSeparator Delimiter
 
-" Colors
-hi Comment ctermfg=Gray guifg=Gray
-hi SpecialComment ctermfg=DarkGray guifg=DarkGray
-hi Delimiter ctermfg=DarkGray guifg=DarkGray
-hi ABPBlock ctermfg=Red guifg=Red
-hi ABPBlockException ctermfg=Green guifg=Green
-hi ABPElemhide ctermfg=DarkRed guifg=DarkRed
-hi ABPOption ctermfg=DarkBlue guifg=DarkBlue
-hi ABPElemhideException ctermfg=DarkGreen guifg=DarkGreen
+let b:current_syntax = 'adp'
+let &cpoptions = s:cpo_save
+unlet s:cpo_save
+
+" vim: ft=vim
