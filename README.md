@@ -1,29 +1,25 @@
-# Adblock Plus Filter List syntax
+# Adblock/AdGuard/uBlock filter syntax
 
-[Sublime Text 3][st3] and VIM syntax definition and color scheme for [Adblock Plus filter lists][abp]. The Sublime Text color scheme is based on [FreshCut by Dayle Rees][freshcut].
+Vim syntax definition for the Adblock+, AdGuard, and uBlock origin filter.
 
-![Sublime Text 3 screenshot](screenshots/sublime.png)
-![VIM screenshot](screenshots/vim.png)
+Based on the syntax by @ThomasGreiner [^1], but with some modifications.
+
+There isn't a `ftdetect` included for this filter. If you want one, you can write it yourself.
 
 ## Installation
 
-### Use prebuilt files
+For vim-plug users, you can use
 
-- Sublime Text
-    - Copy all files in `sublime` directory into Sublime Text's `Packages/User` directory.
-    - Apply the syntax for specific files via Sublime's menu. Note that it will be applied automatically to any files with a valid `[adblock]` header.
-- VIM
-    - Copy `vim/ftdetect/abp.vim` into `~/.vim/ftdetect` directory.
-    - Copy `vim/syntax/abp.vim` into `~/.vim/syntax` directory.
+```vim
+Plug 'YaBoiBurner/adblock-syntax.vim'
+```
 
-### Build it yourself
+Or, for packer users, you can use
 
-1. Install [syntax tools][syntax-tools]
-2. Create and deploy files
-    - Sublime Text: `<path-to-syntax-tools>/build abp src/sublime`
-    - VIM: `<path-to-syntax-tools>/build abp src/vim`
+```lua
+use("YaBoiBurner/adblock-syntax.vim")
+-- Or for lazy-loading, though it has no real benefit
+use({"YaBoiBurner/adblock-syntax.vim", ft = "adp"})
+```
 
-[abp]: https://adblockplus.org/en/filters
-[freshcut]: https://github.com/daylerees/colour-schemes/blob/master/legacy/Contrast/FreshCut.tmTheme
-[st3]: http://www.sublimetext.com/
-[syntax-tools]: https://github.com/ThomasGreiner/syntax-tools
+[^1]: https://github.com/ThomasGreiner/abp-syntax
